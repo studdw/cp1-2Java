@@ -57,6 +57,7 @@ public abstract class Veiculo {
     /**
      * Método concreto que é sobrescrito pelas subclasses (polimorfismo).
      */
+    
     public String exibirDetalhes() {
         return "Placa: " + placa +
                 " | Modelo: " + modelo +

@@ -19,7 +19,7 @@ public class VeiculoNovo extends Veiculo {
 
     @Override
     public double calcularValorFinal() {
-        // Veículo novo não tem desconto, preço cheio de tabela
+        // Novo fica sem desconto
         return getPreco();
     }
 

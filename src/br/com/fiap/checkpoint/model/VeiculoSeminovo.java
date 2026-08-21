@@ -30,7 +30,7 @@ public class VeiculoSeminovo extends Veiculo {
 
     @Override
     public double calcularValorFinal() {
-        // Desconto de 3% para cada dono anterior, limitado a 15%
+        // 3% por dono anterior - maximo 15%
         double percentualDesconto = Math.min(proprietariosAnteriores * 0.03, 0.15);
         return getPreco() - (getPreco() * percentualDesconto);
     }
