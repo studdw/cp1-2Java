@@ -18,6 +18,12 @@ public class ConcessionariaApp {
         this.dao = new VeiculoDao();
     }
 
+    // MÉTODO PRINCIPAL
+    public static void main(String[] args) {
+        ConcessionariaApp app = new ConcessionariaApp();
+        app.iniciar();
+    }
+
     public void iniciar() {
         int opcao = -1;
 
@@ -31,22 +37,30 @@ public class ConcessionariaApp {
             System.out.println("6 - Pesquisar veículo por modelo");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
+
             opcao = Integer.parseInt(scanner.nextLine().trim());
 
             if (opcao == 1) {
                 cadastrarVeiculo();
+
             } else if (opcao == 2) {
                 listarVeiculos();
+
             } else if (opcao == 3) {
                 pesquisarPorPlaca();
+
             } else if (opcao == 4) {
                 editarVeiculo();
+
             } else if (opcao == 5) {
                 removerVeiculo();
+
             } else if (opcao == 6) {
                 pesquisarPorModelo();
+
             } else if (opcao == 0) {
                 System.out.println("Encerrando o sistema. Até mais!");
+
             } else {
                 System.out.println("Opção inválida! Tente novamente.");
             }
@@ -68,7 +82,9 @@ public class ConcessionariaApp {
         int ano = Integer.parseInt(scanner.nextLine().trim());
 
         System.out.print("Preço: ");
-        double preco = Double.parseDouble(scanner.nextLine().trim().replace(",", "."));
+        double preco = Double.parseDouble(
+                scanner.nextLine().trim().replace(",", ".")
+        );
 
         System.out.print("Tipo (1 - Novo | 2 - Seminovo): ");
         int tipo = Integer.parseInt(scanner.nextLine().trim());
@@ -76,17 +92,34 @@ public class ConcessionariaApp {
         Veiculo veiculo;
 
         if (tipo == 1) {
+
             System.out.print("Garantia (meses): ");
             int garantia = Integer.parseInt(scanner.nextLine().trim());
-            veiculo = new VeiculoNovo(placa, modelo, ano, preco, garantia);
+
+            veiculo = new VeiculoNovo(
+                    placa,
+                    modelo,
+                    ano,
+                    preco,
+                    garantia
+            );
+
         } else {
+
             System.out.print("Quilometragem: ");
             int km = Integer.parseInt(scanner.nextLine().trim());
 
             System.out.print("Quantidade de donos anteriores: ");
             int donos = Integer.parseInt(scanner.nextLine().trim());
 
-            veiculo = new VeiculoSeminovo(placa, modelo, ano, preco, km, donos);
+            veiculo = new VeiculoSeminovo(
+                    placa,
+                    modelo,
+                    ano,
+                    preco,
+                    km,
+                    donos
+            );
         }
 
         boolean sucesso = dao.cadastrar(veiculo);
@@ -105,6 +138,7 @@ public class ConcessionariaApp {
             System.out.println("Nenhum veículo cadastrado.");
         } else {
             System.out.println("----- Lista de veículos -----");
+
             for (Veiculo v : veiculos) {
                 System.out.println(v);
             }
@@ -132,7 +166,9 @@ public class ConcessionariaApp {
         String modelo = scanner.nextLine();
 
         System.out.print("Novo preço: ");
-        double preco = Double.parseDouble(scanner.nextLine().trim().replace(",", "."));
+        double preco = Double.parseDouble(
+                scanner.nextLine().trim().replace(",", ".")
+        );
 
         boolean sucesso = dao.editar(placa, modelo, preco);
 
@@ -171,4 +207,3 @@ public class ConcessionariaApp {
         }
     }
 }
-
