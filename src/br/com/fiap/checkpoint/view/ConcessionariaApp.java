@@ -18,7 +18,6 @@ public class ConcessionariaApp {
         this.dao = new VeiculoDao();
     }
 
-    // MÉTODO PRINCIPAL
     public static void main(String[] args) {
         ConcessionariaApp app = new ConcessionariaApp();
         app.iniciar();
@@ -159,7 +158,7 @@ public class ConcessionariaApp {
     }
 
     private void editarVeiculo() {
-        System.out.print("Placa do veículo a editar: ");
+        System.out.print("Placa do veículo que vai editar: ");
         String placa = scanner.nextLine();
 
         System.out.print("Novo modelo: ");
@@ -173,27 +172,27 @@ public class ConcessionariaApp {
         boolean sucesso = dao.editar(placa, modelo, preco);
 
         if (sucesso) {
-            System.out.println("Veículo atualizado com sucesso!");
+            System.out.println("Veículo atualizado!");
         } else {
             System.out.println("Veículo não encontrado.");
         }
     }
 
     private void removerVeiculo() {
-        System.out.print("Placa do veículo a remover: ");
+        System.out.print("Placa do veículo para remover: ");
         String placa = scanner.nextLine();
 
         boolean sucesso = dao.remover(placa);
 
         if (sucesso) {
-            System.out.println("Veículo removido com sucesso!");
+            System.out.println("Veículo removido!!!");
         } else {
             System.out.println("Veículo não encontrado.");
         }
     }
 
     private void pesquisarPorModelo() {
-        System.out.print("Digite o modelo (ou parte dele): ");
+        System.out.print("Digite o modelo: ");
         String modelo = scanner.nextLine();
 
         List<Veiculo> encontrados = dao.pesquisarPorModelo(modelo);

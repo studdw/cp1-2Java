@@ -48,15 +48,8 @@ public abstract class Veiculo {
         }
     }
 
-    /**
-     * Método abstrato: cada tipo de veículo calcula o valor final
-     * de um jeito diferente (usado depois via POLIMORFISMO).
-     */
     public abstract double calcularValorFinal();
 
-    /**
-     * Método concreto que é sobrescrito pelas subclasses (polimorfismo).
-     */
     
     public String exibirDetalhes() {
         return "Placa: " + placa +
